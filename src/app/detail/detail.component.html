@@ -28,6 +28,24 @@
 
     <div class="col-md-6">
       <h4>Autres Images</h4>
+      @if (auth.logged){
+        <form (ngSubmit)="submitComment()">
+          <div class="mb-3">
+            <textarea  name="comment" class="form-control" rows="3" placeholder="Votre commentaire" [(ngModel)]="newComment.comment"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="rating" class="form-label">Note</label>
+            <input
+              name="rating"
+              id="rating"
+              type="number"
+              class="form-control"
+              placeholder="Rating"
+              [(ngModel)]="newComment.rating"
+              min="1"
+              max="5"></div>
+          <button type="submit" class="btn btn-primary">Ajouter Commentaire</button>
+        </form>}
       <div class="row">
         <div class="col-6 mb-2" *ngFor="let image of product?.images">
           <img [src]="image" class="img-fluid rounded" alt="Image de {{ product?.title }}" />
@@ -38,7 +56,7 @@
 
   <div class="mt-5">
     <h4>Avis des Clients</h4>
-    <div *ngFor="let review of product?.reviews" class="border p-3 mb-2">
+    <div *ngFor="let review of reviews" class="border p-3 mb-2">
       <strong>{{ review.reviewerName }} ({{ review.reviewerEmail }})</strong>
       <p class="text-warning">{{ review.rating }} ★</p>
       <p>{{ review.comment }}</p>

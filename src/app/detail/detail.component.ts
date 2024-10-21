@@ -19,7 +19,7 @@ import {User} from "../user.model";
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
-  product : Product | undefined ;  // Product to display
+  product !: Product | undefined ;  // Product to display
   products: Array<Product> = []; // Store all products
   auth = inject(AuthserviceService)
   newComment !: Comment;
@@ -28,7 +28,7 @@ export class DetailComponent implements OnInit {
     private route: ActivatedRoute,
     private productService: ProdService // Inject service to get product details
   ) {}
-
+  reviews !:{ rating: number; comment: string; date: string; reviewerName: string; reviewerEmail: string }[] | undefined ;
   ngOnInit(): void {
 
 
@@ -41,7 +41,7 @@ export class DetailComponent implements OnInit {
 
         // Find the product with the matching 'id'
         this.product = this.products.find(product => product.id === productId);
-
+        this.reviews = this.product?.reviews;
         if (!this.product) {
           console.error('Product not found');
         }
