@@ -1,0 +1,48 @@
+.product-card {
+  width: 100%; /* Ensures cards take up full column width */
+  height: 450px; /* Fixed height for all product cards */
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image {
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Ensures the image covers the space without distortion */
+}
+.card-price {
+  font-size: 1.1rem; /* Distinct size for the price */
+  font-weight: bold; /* Bold font to emphasize the price */
+}
+.product-category {
+  font-size: 0.9rem; /* Smaller font size for category */
+  color: #6c757d; /* Gray color for the category */
+  text-transform: uppercase; /* Uppercase for a stylish look */
+  letter-spacing: 1px; /* Slightly increased spacing */
+  margin-bottom: 10px; /* Space below the category */
+}
+
+.product-description {
+  height: 60px; /* Fixed height for the description */
+  overflow: hidden; /* Hides overflowing text */
+  text-overflow: ellipsis; /* Adds '...' for overflowed text */
+}
+
+.card-title {
+  height: 40px; /* Fixed height for the title */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Prevents overflow with ellipsis if the title is too long */
+}
+
+.btn {
+  align-self: center;
+  margin-top: auto; /* Pushes the button to the bottom of the card */
+}
+.btn-orange {
+  background-color: #ff5722; /* Orange background */
+  border: none; /* Remove border */
+  color: white; /* White text for contrast */
+}
+
+.btn-orange:hover {
+  background-color: #e64a19; /* Darker orange on hover */
+}

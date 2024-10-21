@@ -1,0 +1,61 @@
+.product-card {
+  width: 100%; /* Ensures the card takes the full column width */
+  max-width: 300px; /* Optional: Set a maximum width for smaller devices */
+  border-radius: 15px; /* Adds rounded corners to the card */
+  overflow: hidden; /* Ensures content fits neatly within the card */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Adds hover effect */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Adds a deeper shadow on hover */
+}
+
+.product-image {
+  height: 200px; /* Fixed height for the product image */
+  object-fit: cover; /* Ensures the image covers the space properly */
+  border-radius: 10px; /* Adds subtle rounded corners to the image */
+}
+
+.card-title {
+  font-size: 1.25rem; /* Slightly larger font size for product name */
+  margin-bottom: 0.5rem; /* Adds spacing between the title and price */
+  color: #333; /* Darker color for better readability */
+}
+
+.card-price {
+  font-size: 1.1rem; /* Distinct size for the price */
+  font-weight: bold; /* Bold font to emphasize the price */
+}
+
+.card-text {
+  font-size: 0.9rem; /* Makes the quantity text smaller */
+  color: #6c757d; /* Uses Bootstrap's muted text color */
+}
+
+.btn-outline-primary {
+  width: 100%; /* Makes the button span the entire width */
+  padding: 0.6rem; /* Adds padding for a more clickable button */
+  border-radius: 10px; /* Matches the button's corners with the card's style */
+  font-weight: bold; /* Emphasizes the button text */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff; /* Changes the background to primary color on hover */
+  color: #fff; /* Makes the text white on hover */
+}
+.quantity-badge {
+  background-color: #ff5722; /* Custom orange background color */
+  color: white; /* White text for better contrast */
+  padding: 0.5em 1em; /* Padding for a bolder look */
+  font-size: 1rem; /* Slightly larger font size */
+  font-weight: bold; /* Makes the quantity stand out */
+  border-radius: 20px; /* Adds rounded corners */
+  margin-left: 10px; /* Adds space between the 'Quantité:' text and badge */
+}
+
+.card-text {
+  font-size: 1rem; /* Makes the text more readable */
+  color: #6c757d; /* Uses Bootstrap's muted text color */
+}

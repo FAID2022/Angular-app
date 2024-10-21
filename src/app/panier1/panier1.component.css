@@ -1,0 +1,82 @@
+.custom-table-width {
+  width: 80%; /* Control the width of the table */
+  margin: 0 auto; /* Center the table */
+  border-collapse: collapse;
+}
+
+.product-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+}
+
+table {
+  background-color: #f8f9fa; /* Light background for the table */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add some shadow for styling */
+}
+
+td {
+  padding: 15px;
+  vertical-align: middle; /* Vertically align the content */
+}
+
+td h5, td h6 {
+  margin: 0; /* Remove margins to keep content compact */
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+.btn {
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+.total-amount {
+  font-size: 1.5rem; /* Adjust font size as needed */
+  color: #007bff;    /* Change to your desired color */
+  border: 1px solid #007bff; /* Optional: add a border */
+  padding: 10px;     /* Add some padding for better spacing */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f8f9fa; /* Light background for contrast */
+  display: inline-block; /* Ensure it's sized to its content */
+  cursor: pointer; /* Pointer cursor for clickable effect */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.total-amount:hover {
+  background-color: #007bff; /* Change background on hover */
+  color: white; /* Change text color on hover */
+}
+.styled-container {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 10px 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-buy {
+  background-color: #28a745;
+  color: white;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-buy:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+

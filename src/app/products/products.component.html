@@ -1,0 +1,65 @@
+<form class="d-flex align-items-center">
+  <input
+    #query
+    (keyup)="filter(query.value)"
+    class="px-2 search"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+  />
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle rounded-circle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <!-- Icon or text for the button, like a magnifying glass -->
+      <i class="fas fa-search"></i> <!-- Use Font Awesome or any icon of your choice -->
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li *ngFor="let category of categories">
+        <a class="dropdown-item" (click)="ajouter4(category)">{{ category }}</a>
+      </li>
+    </ul>
+  </div>
+
+</form>
+@if (prodservice.isProduct) {
+  <div class="row">
+    @for (item of filtered; track $index) {
+      <div class="col-lg-2 text-center product-card">
+
+        <app-item [product]="item" (prodselected)="ajouter3($event)"/>
+
+      </div>}
+
+
+  </div> }
+
+@if (!prodservice.isProduct){
+  <div class="row">
+    @for (item of productselected; track $index) {
+
+      <div class="col-lg-2 text-center">
+        <app-item [product]="item" (prodselected)="ajouter3($event)"/>
+      </div>}</div>
+  <!--<div class="row">
+      <div class="col-lg-2 text-center">
+      <app-panier [products]="productselected[0]"/>
+      </div>
+      <div class="col-lg-2 text-center">
+          <app-panier [products]="productselected[0]"/>
+          </div>
+          <div class="col-lg-2 text-center">
+              <app-panier [products]="productselected[0]"/>
+              </div>
+              <div class="col-lg-2 text-center">
+                  <app-panier [products]="productselected[0]"/>
+                  </div>
+                  <div class="col-lg-2 text-center">
+                      <app-panier [products]="productselected[0]"/>
+                      </div>
+                      <div class="col-lg-2 text-center">
+                          <app-panier [products]="productselected[0]"/>
+                          </div>
+
+  </div>-->
+}
+

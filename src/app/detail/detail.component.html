@@ -1,0 +1,58 @@
+
+<div class="container my-5">
+  <h1 class="text-center mb-4">{{ product?.title }}</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <img [src]="product?.thumbnail" class="card-img-top" alt="{{ product?.title }}" />
+        <div class="card-body">
+          <h5 class="card-title">Prix: {{ product?.price  }}$</h5>
+          <p class="card-text">{{ product?.description }}</p>
+          <p class="card-text">
+            <strong>Catégorie:</strong> {{ product?.category }}
+          </p>
+          <p class="card-text">
+            <strong>Évaluation:</strong>
+            <span class="text-warning">{{ product?.rating }} ★</span>
+          </p>
+          <p class="card-text">
+            <strong>Stock:</strong> {{ product?.stock }} unités
+          </p>
+          <p class="card-text">
+            <strong>Status:</strong> <span [ngClass]="{'text-success': product?.availabilityStatus === 'Available', 'text-danger': product?.availabilityStatus === 'Out of Stock'}">{{ product?.availabilityStatus }}</span>
+          </p>
+          <a [routerLink]="['/panier', product?.id]" class="btn btn-primary">Ajouter au panier</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4>Autres Images</h4>
+      <div class="row">
+        <div class="col-6 mb-2" *ngFor="let image of product?.images">
+          <img [src]="image" class="img-fluid rounded" alt="Image de {{ product?.title }}" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5">
+    <h4>Avis des Clients</h4>
+    <div *ngFor="let review of product?.reviews" class="border p-3 mb-2">
+      <strong>{{ review.reviewerName }} ({{ review.reviewerEmail }})</strong>
+      <p class="text-warning">{{ review.rating }} ★</p>
+      <p>{{ review.comment }}</p>
+      <small>{{ review.date }}</small>
+    </div>
+
+
+  </div>
+
+
+
+
+</div>
+
+
+
+

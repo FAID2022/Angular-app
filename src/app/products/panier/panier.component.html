@@ -1,0 +1,23 @@
+<div class="card border-0 bg-light mb-4 shadow-sm product-card">
+  <div class="card-body text-center d-flex flex-column">
+    <!-- Product Image -->
+    <img [src]="products.produit.images[1]" class="img-fluid mb-3 product-image rounded" alt="Product Image"/>
+
+    <!-- Product Name -->
+    <h5 class="card-title font-weight-bold">{{ products.produit.title }}</h5>
+
+    <!-- Product Price -->
+    <h5 class="card-price text-primary mb-2">{{ products.produit.price  }}$</h5>
+
+    <!-- Product Quantity -->
+    <p class="card-text text-muted">
+
+      <span class="badge quantity-badge">{{ products.Qte }}</span>
+    </p>
+
+    <!-- Add to Cart Button (optional) -->
+
+  </div>
+</div>
+
+

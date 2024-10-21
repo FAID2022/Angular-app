@@ -1,0 +1,47 @@
+import {Injectable, OnInit} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {map, Observable} from "rxjs";
+import {Product} from "./prod.model";
+import {LignePanier} from "./pani.model";
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ProdService  {
+
+  constructor(private http: HttpClient ) {}
+  productselected: Array<LignePanier> = [];
+  getProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>('https://dummyjson.com/products');
+  }
+  getCategories(): Observable<Object> {
+    return this.http.get('https://dummyjson.com/products/category-list')
+
+  }
+  getProductBycategory(categorie: string): Observable<Object> {
+    return this.http.get('https://dummyjson.com/products/category-list')
+
+  }
+  public isPanier: boolean = false;
+  public isProduct: boolean = true;
+  public login : boolean = true;
+  categories !: Array<string> ;
+  ajouter2(p: Product) {
+    // Recherche d'un produit existant dans productselected
+    const existingProduct = this.productselected.find(item => item.produit.id === p.id);
+
+    if (existingProduct) {
+      // Si le produit existe, incrémenter la quantité
+      existingProduct.Qte += 1;
+      existingProduct.total += p.price;
+    } else {
+      // Sinon, ajouter le produit avec une quantité initiale de 1
+      this.productselected.push({ produit: p, Qte: 1,total:p.price });
+    }
+
+    console.log(this.productselected);
+  }
+
+
+
+}

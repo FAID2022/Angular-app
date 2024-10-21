@@ -1,0 +1,35 @@
+.navbar-brand{
+  font-size: 2 rem;
+  color : black;
+  font-family: "Lobster",cursive;
+}
+.nav-link{
+  margin-right: 10 px;
+  margin-left: 10 px;
+  color: black;
+  font-family: 'Rubik',sans-serif;
+  text-transform: uppercase;
+}
+.nav-link :hover{
+  color: black;
+}
+
+.btn0{
+  height: 40px;
+  width: 60px;
+  outline : none ;
+  border: none;
+  background: rgb(248,26,92) ;
+  border-radius: 60px;
+  color: white;
+  font-weight: 700;
+}
+.search {
+  height: 40px;
+  width: 80%;
+  margin-right: -35px;
+  border-radius: 60px;
+  outline: none;
+  font-family: 'Rubik',sans-serif;
+  border: 2px solid rgb(248,26,92);
+}
