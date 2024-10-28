@@ -8,7 +8,10 @@ import {Observable,of} from "rxjs";
 import {Subscription} from "rxjs";
 import {RouterLink} from "@angular/router";
 import {NgFor} from "@angular/common";
-
+export interface Category {
+  _id: string;
+  category: string;
+}
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -22,28 +25,31 @@ export class ProductsComponent implements OnInit{
 
   products!: Array<Product>;
   filtered: Product[] = this.products;
-  categories !: string[] ;
+  categories: string[] = [];
   selectedcategory !:string;
   ngOnInit(): void {
     // Fetch products from the service
-    this.prodservice.getProducts()
+    this.prodservice.getProducts2()
       .subscribe(
         (response: any) => {
-          this.products = response.products;
+          this.products = response;
 
         },
         (error) => {
           console.error('Error fetching products', error);
         }
       );
-    this.prodservice.getCategories()
+    this.prodservice.getCategories1()
       .subscribe(
-        (response: any) => {
-          this.categories = response ;
+        (response: Category[]) => {
+          // If you only need category names
+          this.categories = response.map(category => category.category);
 
+          // If you need the entire response as objects
+          // this.categories = response;
         },
         (error) => {
-          console.error('Error fetching products', error);
+          console.error('Error fetching categories', error);
         }
       );
 
