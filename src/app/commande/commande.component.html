@@ -1,1 +1,56 @@
-<p>commande works!</p>
+<div class="row">
+  <div class="col-lg-12">
+    <table *ngFor="let item of userservice.user.orders; let i = index" class="table table-bordered table-hover text-center custom-table-width">
+      <div class="item-info">
+        <p class="item-date">
+          <span class="date-icon">📅</span>
+          <span class="date-label">Date:</span> {{ item.date | date: 'MMMM d, yyyy, h:mm a' }}
+        </p>
+        <p class="item-total">Total: {{ item.total | currency }}</p>
+      </div>
+
+
+      <tbody>
+      <tr *ngFor="let ite of item.panier; let i = index">
+        <!-- Product Image -->
+        <td>
+          <img [src]="ite.produit.images[0]" class="img-fluid product-image rounded" alt="Product Image" />
+        </td>
+
+        <!-- Product Title -->
+        <td>
+          <h5 class="font-weight-bold">{{ ite.produit.title }}</h5>
+        </td>
+
+        <!-- Product Price -->
+        <td>
+          <h6 class="text-primary">{{ ite.produit.price | currency}}$</h6>
+        </td>
+
+        <!-- Product Quantity -->
+        <td>
+          <div class="d-flex align-items-center justify-content-center">
+            <!-- Minus Button -->
+
+
+            <!-- Quantity Display -->
+            <span class="mx-2">{{ ite.Qte }}</span>
+
+            <!-- Plus Button -->
+
+          </div>
+        </td>
+
+        <!-- Buy Button -->
+        <td>
+          <h6 class="text-primary">{{ item.total | currency}}</h6>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <!-- Total and Buy All Button -->
+
+
+  </div>
+</div>

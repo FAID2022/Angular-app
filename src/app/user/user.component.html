@@ -1,0 +1,44 @@
+<div class="container payment-container mt-5 p-4 bg-light rounded shadow-lg">
+  <h2 class="text-center mb-4 text-danger">Checkout</h2>
+
+  <!-- Billing Address Section -->
+  <div class="billing-section mb-4">
+    <h3 class="text-pink">Billing Address</h3>
+    <form [formGroup]="form" class="container">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="username">Full Name</label>
+          <input type="text" class="form-control border-pink" id="username" formControlName="username" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="address">Address</label>
+          <input type="text" class="form-control border-pink" id="address" formControlName="address" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="city">City</label>
+          <input type="text" class="form-control border-pink" id="city" formControlName="city" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="state">State</label>
+          <input type="text" class="form-control border-pink" id="state" formControlName="state" required>
+        </div>
+      </div>
+
+      <!-- Payment Method Section -->
+
+    </form>
+
+  </div>
+
+  <!-- Order Summary Section -->
+
+
+    <!-- Submit Button -->
+    <button class="btn btn-danger btn-block submit-btn" (click)="buyll()">Save</button>
+
+</div>
+
+

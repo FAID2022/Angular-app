@@ -25,25 +25,15 @@ export class ProductsComponent implements OnInit{
 
   products!: Array<Product>;
   filtered: Product[] = this.products;
-  categories: string[] = [];
+  categories !: string[];
   selectedcategory !:string;
   ngOnInit(): void {
-    // Fetch products from the service
-    this.prodservice.getProducts2()
-      .subscribe(
-        (response: any) => {
-          this.products = response;
-
-        },
-        (error) => {
-          console.error('Error fetching products', error);
-        }
-      );
     this.prodservice.getCategories1()
       .subscribe(
-        (response: Category[]) => {
+        (response: string[]) => {
+          console.log(response);
           // If you only need category names
-          this.categories = response.map(category => category.category);
+          this.categories = response;
 
           // If you need the entire response as objects
           // this.categories = response;
@@ -52,6 +42,20 @@ export class ProductsComponent implements OnInit{
           console.error('Error fetching categories', error);
         }
       );
+    // Fetch products from the service
+    this.prodservice.getProducts2()
+      .subscribe(
+        (response: any) => {
+
+          this.filtered = response;
+          this.products = response;
+
+        },
+        (error) => {
+          console.error('Error fetching products', error);
+        }
+      );
+
 
     // Fetch products by category if needed
 

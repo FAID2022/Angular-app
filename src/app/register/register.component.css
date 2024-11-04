@@ -1,0 +1,51 @@
+/* Center the form and set a maximum width */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff5f7; /* Light pink background */
+}
+
+.register-form {
+  max-width: 400px;
+  width: 100%;
+  background-color: #ffe6eb; /* Softer pink form background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input field styling with pink border focus */
+.stylish-input {
+  border: 2px solid #f8bbd0; /* Light pink border */
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+.stylish-input:focus {
+  border-color: #e91e63; /* Pink border on focus */
+  box-shadow: 0 0 8px rgba(233, 30, 99, 0.3);
+}
+
+/* Custom button styling */
+.btn-custom {
+  background-color: #e91e63; /* Pink background */
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #d81b60; /* Darker pink on hover */
+}
+
+.text-danger small {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+
+h2 {
+  font-weight: 600;
+}

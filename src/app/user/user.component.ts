@@ -1,21 +1,25 @@
 import {Component, inject} from '@angular/core';
 import {ProdService} from "../products/prod.service";
 import {LignePanier} from "../products/pani.model";
-import {NgFor} from "@angular/common";
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {AuthserviceService} from "../authservice.service";
 import {Router} from "@angular/router";
 import {UserService} from "../user.service";
 import {User} from "../login/login.component";
+import {NgForOf} from "@angular/common";
 
 @Component({
-  selector: 'app-orders',
+  selector: 'app-user',
   standalone: true,
-  imports: [NgFor, ReactiveFormsModule],
-  templateUrl: './orders.component.html',
-  styleUrl: './orders.component.css'
+  imports: [
+    FormsModule,
+    NgForOf,
+    ReactiveFormsModule
+  ],
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css'
 })
-export class OrdersComponent {
+export class UserComponent {
   prodservice = inject(ProdService);
   productselected: Array<LignePanier> = this.prodservice.productselected;
 
@@ -46,32 +50,16 @@ export class OrdersComponent {
     address: [this.userserv.user.address, Validators.required], // Add address field
     city: [this.userserv.user.address, Validators.required],    // Add city field
     state: [this.userserv.user.state, Validators.required],    // Add state field
-    zip: ['', Validators.required],
-    cardNumber: ['', Validators.required],
-    expiryDate: ['', Validators.required],
-    cvv: ['', Validators.required],
+
   });
   buyll() {
-    const total = this.userserv.user.panier.reduce((acc, item) => {
-      return acc + item.total; // Accumulate the total from each LignePanier item
-    }, 0);
-
-    this.userserv.user.orders.push({
-      panier: this.userserv.user.panier,
-      date: new Date(),
-      total: total // Assign the accumulated total here
-    });
-
+    this.userserv.user.username=this.form.getRawValue().username;
+    this.userserv.user.email=this.form.getRawValue().email;
+    this.userserv.user.address=this.form.getRawValue().address;
+    this.userserv.user.city=this.form.getRawValue().city;
+    this.userserv.user.state=this.form.getRawValue().state;
     this.userserv.save();
   }
 
-  buyone() {
-    this.userserv.user.orders.push({
-      // State field
-      panier:[this.userserv.selectedpro],
-      date : new Date(),
-      total: this.userserv.selectedpro.total
-    })
-    this.userserv.save();
-  }
+
 }
