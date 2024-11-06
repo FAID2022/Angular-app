@@ -7,6 +7,8 @@ import {AuthserviceService} from "../authservice.service";
 import {Router} from "@angular/router";
 import {UserService} from "../user.service";
 import {User} from "../login/login.component";
+import {Commande} from "../products/Commande.model";
+import {LignePanierDAO} from "../products/paniIDAO";
 
 @Component({
   selector: 'app-orders',
@@ -51,21 +53,60 @@ export class OrdersComponent {
     expiryDate: ['', Validators.required],
     cvv: ['', Validators.required],
   });
+  public c1 = new Commande('', new Date(), [], 0);
   buyll() {
-    const total = this.userserv.user.panier.reduce((acc, item) => {
-      return acc + item.total; // Accumulate the total from each LignePanier item
-    }, 0);
-
-    this.userserv.user.orders.push({
+    console.log('Starting buyAll process'); // Log to confirm function is called
+  //  const total = this.userserv.user.panier.reduce((acc, item) => {
+   //   return acc + item.total; // Accumulate the total from each LignePanier item
+   // }, 0);
+ this.c1.date=new Date();
+ /*this.c1.items = this.userserv.user.panier.map(item => ({
+      id: item.produit.id,
+      Qte: item.Qte
+    }));*/
+ this.c1.total=30;
+ this.c1.userId=this.auth.user_Id
+  /*  this.userserv.user.orders.push({
       panier: this.userserv.user.panier,
       date: new Date(),
-      total: total // Assign the accumulated total here
-    });
+      total : this.userserv.user.panier.reduce((acc, item) => acc + item.total, 0)// Assign the accumulated total here
+    });*/
 
-    this.userserv.save();
+    console.log('Prepared commande:', this.c1);
+    this.auth.saveCommande(this.c1).then(() => {
+      console.log('Commande saved!');
+    }).catch(error => {
+      console.error('Error saving commande:', error);
+    });
+  }
+
+  buyll2() {
+  const c2 = new Commande('', new Date(), [], 0);
+    console.log('Starting buyAll process');
+    const panierDAO: LignePanierDAO[] = this.userserv.user.panier.map(item => ({
+      id: item.produit.id,
+      Qte: item.Qte // Ensure this matches the exact property name in `LignePanierDAO`
+    }));
+
+    this.userserv.save()
+
+    c2.items=panierDAO;
+    c2.userId=this.auth.user_Id;
+    c2.total=parseFloat(this.userserv.user.panier.reduce((acc, item) => acc + item.total, 0).toFixed(2))
+    console.log('Prepared commande:', c2);
+
+    // Save the commande with error handling
+    this.auth.saveCommande(c2)
+      .then(() => {
+        console.log('Commande saved!');
+      })
+      .catch(error => {
+        console.error('Error saving commande:', error);
+      });
   }
 
   buyone() {
+    console.log('Starting buyAll process');
     this.userserv.user.orders.push({
       // State field
       panier:[this.userserv.selectedpro],

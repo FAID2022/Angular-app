@@ -54,7 +54,10 @@ export class UserService {
       this.httpClient.post("http://localhost:3000/getUser",{
         "email": email
       }).subscribe(
-      (response:any) => {this.user=response;
+      (response:any) => {this.user=this.user = {
+        ...response,
+        orders: response.orders || []  // Ensure orders is an array
+      };
         console.log(response);},
       (error:any) => {console.log(error);}
     )
@@ -62,6 +65,16 @@ export class UserService {
 
   save() {
     if (this.auth.logged) {
+      console.log(this.user);
+      if (Array.isArray(this.user.orders)) {
+        this.user.orders.push({
+          panier: this.user.panier,
+          date: new Date(),
+          total: parseFloat(this.user.panier.reduce((acc, item) => acc + item.total, 0).toFixed(2))
+        });
+      } else {
+        console.error("this.user.orders is not an array");
+      }
       this.httpClient.put('http://localhost:3000/putUser', this.user)
         .subscribe({
           next: (res) => {

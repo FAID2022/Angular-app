@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import {provideClientHydration} from "@angular/platform-browser";
 import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 import {getAuth, provideAuth} from "@angular/fire/auth";
+import {getFirestore, provideFirestore} from "@angular/fire/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyAGMLGhJHQ3fc1-0-Qd0hMnQh5_fYZ8lns",
   authDomain: "yoshop-a7ab4.firebaseapp.com",
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(),
     provideHttpClient(),// Add HttpClient
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideFirestore(() => getFirestore()),
     provideAuth(()=>getAuth()),
   ]
 };
